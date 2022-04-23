@@ -1,5 +1,5 @@
 import express, { Application, Request, Response } from "express";
-import routesUsers from "./users/interfaces/http/users.route";
+import RoutesUser from "./users/interfaces/http/users.route";
 import routesDrivers from "./drivers/interfaces/drivers.route";
 
 class App {
@@ -12,7 +12,7 @@ class App {
   }
 
   mountRoutes(): void {
-    this.expressApp.use("/users", routesUsers);
+    this.expressApp.use("/users", new RoutesUser().expressRouter);
     this.expressApp.use("/drivers", routesDrivers);
   }
 
