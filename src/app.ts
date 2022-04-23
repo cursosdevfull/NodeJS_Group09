@@ -1,5 +1,5 @@
 import express, { Application, Request, Response } from "express";
-import routesUsers from "./users/interfaces/users.route";
+import routesUsers from "./users/interfaces/http/users.route";
 import routesDrivers from "./drivers/interfaces/drivers.route";
 
 class App {

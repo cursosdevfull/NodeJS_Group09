@@ -1,4 +1,3 @@
-import { BaseRepository } from "../../shared/domain/repositories/base-repository";
 import { UserModel } from "../domain/models/user.model";
 import { UserRepository } from "../domain/repositories/user.repository";
 

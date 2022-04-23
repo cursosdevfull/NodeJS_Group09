@@ -9,7 +9,7 @@ export abstract class BaseInfrastructure<T, U> {
     throw new Error("Method not implemented.");
   }
   findAll(): Promise<T[]> {
-    throw new Error("Method not implemented.");
+    return Promise.resolve([{ username: "user" }, { username: "user 2" }] as any[]);
   }
   insert(user: T): Promise<T> {
     return Promise.resolve(user);
