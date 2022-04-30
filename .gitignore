@@ -3,3 +3,4 @@ src
 dist
 cache
 .vscode
+**/node_modules/**
