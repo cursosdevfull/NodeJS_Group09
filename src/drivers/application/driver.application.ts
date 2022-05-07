@@ -21,7 +21,10 @@ export class DriverApplication {
   }
 
   async findAll() {
-    return await this.repositoryDriver.findAll();
+    return await this.repositoryDriver.findAll(
+      { active: true },
+      { lastname: "ASC", name: "ASC" }
+    );
   }
 
   async getReportByDriver(id: number) {

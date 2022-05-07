@@ -14,8 +14,8 @@ export abstract class BaseRouter {
   mountRoutesCommons(): void {
     this.expressRouter.get("/", this.controller.list);
     this.expressRouter.post("/", this.controller.add);
-    this.expressRouter.put("/", this.controller.update);
+    this.expressRouter.put("/:id", this.controller.update);
     this.expressRouter.delete("/:id", this.controller.delete);
-    this.expressRouter.get("/:id", this.controller.findById);
+    /*this.expressRouter.get("/:id", this.controller.findById); */
   }
 }

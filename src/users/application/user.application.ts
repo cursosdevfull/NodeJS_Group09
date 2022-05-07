@@ -21,6 +21,6 @@ export class UserApplication {
   }
 
   async findAll() {
-    return await this.repositoryUser.findAll();
+    return await this.repositoryUser.findAll({}, {});
   }
 }
