@@ -3,14 +3,19 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "moduleResolution": "node",
     "target": "ES2020",
     "noImplicitAny": true,
     "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "baseUrl": ".",
-    "outDir": "./cache"
+    "baseUrl": "./",
+    "outDir": "./cache",
+    "typeRoots": ["@types", "./node_modules/@types"]
   },
   "exclude": ["node_modules"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }

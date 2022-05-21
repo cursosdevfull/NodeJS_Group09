@@ -10,6 +10,7 @@ export class UserModel {
     public refreshToken: string,
     public createdAt: Date,
     public updatedAt: Date,
-    public deletedAt: Date
+    public deletedAt: Date,
+    public active: boolean
   ) {}
 }

@@ -12,6 +12,7 @@ export class DriverController {
   }
 
   async list(req: Request, res: Response) {
+    //req.traceId = "abc";
     const drivers = await this.application.findAll();
     res.json(drivers);
   }
