@@ -7,7 +7,7 @@ export class UserController {
   }
 
   async list(req: Request, res: Response) {
-    const users = await this.application.findAll();
+    const users = await this.application.findAll({}, [], {});
 
     res.json(users);
   }
@@ -19,19 +19,23 @@ export class UserController {
   }
 
   async update(req: Request, res: Response) {
-    const user = await this.application.update(req.body);
+    const user = await this.application.update(
+      req.body,
+      { id: +req.params.id },
+      []
+    );
 
     res.json(user);
   }
 
   async delete(req: Request, res: Response) {
-    const user = await this.application.delete(req.params.id);
+    const user = await this.application.delete({ id: +req.params.id });
 
     res.json(user);
   }
 
   async findById(req: Request, res: Response) {
-    const user = await this.application.findById(req.params.id);
+    const user = await this.application.findOne({ id: +req.params.id }, []);
 
     res.json(user);
   }

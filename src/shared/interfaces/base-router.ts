@@ -16,6 +16,7 @@ export abstract class BaseRouter {
     this.expressRouter.post("/", this.controller.add);
     this.expressRouter.put("/:id", this.controller.update);
     this.expressRouter.delete("/:id", this.controller.delete);
+    this.expressRouter.get("/:id", this.controller.listOne);
     /*this.expressRouter.get("/:id", this.controller.findById); */
   }
 }

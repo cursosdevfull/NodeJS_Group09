@@ -1,26 +1,9 @@
+import { BaseApplication } from "src/shared/application/interfaces/base-application";
 import { UserModel } from "../domain/models/user.model";
 import { UserRepository } from "../domain/repositories/user.repository";
 
-export class UserApplication {
-  constructor(private repositoryUser: UserRepository) {}
-
-  async add(user: UserModel) {
-    return await this.repositoryUser.insert(user);
-  }
-
-  async update(user: UserModel) {
-    return await this.repositoryUser.update(user);
-  }
-
-  async delete(id: string) {
-    return await this.repositoryUser.delete(id);
-  }
-
-  async findById(id: string) {
-    return await this.repositoryUser.findById(id);
-  }
-
-  async findAll() {
-    return await this.repositoryUser.findAll({}, {});
+export class UserApplication extends BaseApplication<UserModel> {
+  constructor(private repositoryUser: UserRepository) {
+    super(repositoryUser);
   }
 }

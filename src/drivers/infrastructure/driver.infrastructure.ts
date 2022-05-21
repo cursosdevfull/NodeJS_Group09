@@ -2,6 +2,10 @@ import { DriverModel } from "../domain/models/driver.model";
 import { DriverRepository } from "../domain/repositories/driver.repository";
 import { BaseInfrastructure } from "../../shared/infrastructure/base-infrastructure";
 import { DriverEntity } from "../domain/models/driver.entity";
+import Result from "src/shared/application/interfaces/result.interface";
+import DatabaseBootstrap from "src/bootstrap/database.bootstrap";
+import { Repository } from "typeorm";
+import { ResponseDto } from "src/shared/application/interfaces/dtos/response.dto";
 
 export class DriverInfrastructure
   extends BaseInfrastructure<DriverModel>
@@ -9,6 +13,16 @@ export class DriverInfrastructure
 {
   constructor() {
     super(DriverEntity);
+  }
+
+  async getAll(where: object = {}): Promise<Result<DriverModel>> {
+    const dataSource = DatabaseBootstrap.dataSource;
+    const repository: Repository<DriverModel> =
+      dataSource.getRepository(DriverEntity);
+
+    const data: DriverModel[] = await repository.find({ where });
+
+    return ResponseDto("", data);
   }
 
   reportByDriver(id: number): Promise<DriverModel[]> {

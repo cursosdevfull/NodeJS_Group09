@@ -1,30 +1,15 @@
 import { DriverModel } from "../domain/models/driver.model";
 import { DriverRepository } from "../domain/repositories/driver.repository";
+import { BaseApplication } from "../../shared/application/interfaces/base-application";
+import { DriverDTO } from "./dtos/dto";
 
-export class DriverApplication {
-  constructor(private repositoryDriver: DriverRepository) {}
-
-  async add(driver: DriverModel) {
-    return await this.repositoryDriver.insert(driver);
+export class DriverApplication extends BaseApplication<DriverModel> {
+  constructor(private repositoryDriver: DriverRepository) {
+    super(repositoryDriver, new DriverDTO());
   }
 
-  async update(driver: DriverModel) {
-    return await this.repositoryDriver.update(driver);
-  }
-
-  async delete(id: number) {
-    return await this.repositoryDriver.delete(id);
-  }
-
-  async findById(id: number) {
-    return await this.repositoryDriver.findById(id);
-  }
-
-  async findAll() {
-    return await this.repositoryDriver.findAll(
-      { active: true },
-      { lastname: "ASC", name: "ASC" }
-    );
+  async getAll() {
+    return await this.repositoryDriver.findAll({}, [], {});
   }
 
   async getReportByDriver(id: number) {

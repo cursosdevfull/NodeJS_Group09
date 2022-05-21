@@ -11,7 +11,7 @@
     "emitDecoratorMetadata": true,
     "baseUrl": "./",
     "outDir": "./cache",
-    "typeRoots": ["@types", "./node_modules/@types"]
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
   "exclude": ["node_modules"],
   "include": ["src/**/*.ts"],
