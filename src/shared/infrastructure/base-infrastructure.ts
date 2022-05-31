@@ -4,9 +4,13 @@ import * as _ from "lodash";
 import Result from "../application/interfaces/result.interface";
 import { ResponseDto } from "../application/interfaces/dtos/response.dto";
 import { Trace } from "../helpers/trace.helper";
+import { Logger } from "../helpers/logging.helper";
 
 export abstract class BaseInfrastructure<T> {
-  constructor(private entity: ObjectType<T>) {}
+  constructor(
+    private entity: ObjectType<T>,
+    private infrastructureName: string = null
+  ) {}
 
   async update(
     entity: Partial<T>,
@@ -23,7 +27,7 @@ export abstract class BaseInfrastructure<T> {
     recordToUpdate = _.merge(recordToUpdate, entity); // {id, name, lastname, age}    {name}
     await repository.save(recordToUpdate);
 
-    return ResponseDto<T>(Trace.traceId, recordToUpdate);
+    return ResponseDto<T>(Trace.traceId(), recordToUpdate);
 
     //recordToUpdate = Object.assign(recordToUpdate, entity); // {id, name, lastname, age}    {name}
   }
@@ -38,7 +42,7 @@ export abstract class BaseInfrastructure<T> {
     recordToDelete = _.merge(recordToDelete, { active: false });
     await repository.save(recordToDelete);
 
-    return ResponseDto<T>(Trace.traceId, recordToDelete);
+    return ResponseDto<T>(Trace.traceId(), recordToDelete);
   }
 
   async findOne(
@@ -49,7 +53,7 @@ export abstract class BaseInfrastructure<T> {
     const repository: Repository<T> = dataSource.getRepository(this.entity);
     const data: T = await repository.findOne({ where, relations });
 
-    return ResponseDto<T>(Trace.traceId, data);
+    return ResponseDto<T>(Trace.traceId(), data);
   }
 
   async findAll(
@@ -57,6 +61,14 @@ export abstract class BaseInfrastructure<T> {
     relations: string[] = [],
     order: object = {}
   ): Promise<Result<T>> {
+    Logger.getLogger().info({
+      typeElement: this.infrastructureName,
+      typeAction: "list",
+      traceId: Trace.traceId(),
+      message: "List all drivers",
+      query: JSON.stringify({}),
+      datetime: new Date(),
+    });
     const dataSource = DatabaseBootstrap.dataSource;
     const repository: Repository<T> = dataSource.getRepository(this.entity);
 
@@ -68,7 +80,7 @@ export abstract class BaseInfrastructure<T> {
       order,
     });
 
-    return ResponseDto<T>(Trace.traceId, data);
+    return ResponseDto<T>(Trace.traceId(), data);
   }
 
   async insert(entity: T): Promise<Result<T>> {
@@ -77,7 +89,7 @@ export abstract class BaseInfrastructure<T> {
     const instance = repository.create(entity);
     const data: T = await repository.save(instance);
 
-    return ResponseDto<T>(Trace.traceId, data);
+    return ResponseDto<T>(Trace.traceId(), data);
   }
 
   async getPage(
@@ -97,6 +109,6 @@ export abstract class BaseInfrastructure<T> {
       take: pageSize,
     });
 
-    return ResponseDto<T>(Trace.traceId, data, total);
+    return ResponseDto<T>(Trace.traceId(), data, total);
   }
 }

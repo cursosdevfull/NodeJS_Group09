@@ -1,4 +1,3 @@
-import { HistoryEntity } from "src/histories/domain/models/history.entity";
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 
 @Entity({ name: "medic" })

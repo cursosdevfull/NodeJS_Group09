@@ -1,4 +1,4 @@
-import { BaseApplication } from "src/shared/application/interfaces/base-application";
+import { BaseApplication } from "../../shared/application/interfaces/base-application";
 import { HistoryModel } from "../domain/models/history.model";
 import { HistoryRepository } from "../domain/repositories/history.repository";
 

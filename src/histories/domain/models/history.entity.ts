@@ -1,4 +1,4 @@
-import { DriverEntity } from "src/drivers/domain/models/driver.entity";
+import { DriverEntity } from "../../../drivers/domain/models/driver.entity";
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 
 @Entity({ name: "history" })

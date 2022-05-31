@@ -1,4 +1,4 @@
-import { HistoryEntity } from "src/histories/domain/models/history.entity";
+import { HistoryEntity } from "../../../histories/domain/models/history.entity";
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 
 @Entity({ name: "driver" })
@@ -18,6 +18,6 @@ export class DriverEntity {
   @Column({ type: "boolean", default: true })
   active: boolean;
 
-  @OneToMany(type => HistoryEntity, history => history.driver)
+  @OneToMany((type) => HistoryEntity, (history) => history.driver)
   histories: HistoryEntity[];
 }

@@ -5,7 +5,7 @@ import { DriverDTO } from "./dtos/dto";
 
 export class DriverApplication extends BaseApplication<DriverModel> {
   constructor(private repositoryDriver: DriverRepository) {
-    super(repositoryDriver, new DriverDTO());
+    super(repositoryDriver, new DriverDTO(), "DriverApplication");
   }
 
   async getAll() {

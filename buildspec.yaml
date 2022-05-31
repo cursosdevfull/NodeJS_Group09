@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  pre-build:
+    commands:
+      - echo Logging in to AWS ECR
+      - aws --version
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 282865065290.dkr.ecr.us-east-1.amazonaws.com/cursonodejs09
+      - REPOSITORY_URI=282865065290.dkr.ecr.us-east-1.amazonaws.com/cursonodejs09
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  build:
+
+  post-build:

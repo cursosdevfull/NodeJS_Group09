@@ -1,5 +1,5 @@
-import { DriverModel } from "src/drivers/domain/models/driver.model";
-import Result from "src/shared/application/interfaces/result.interface";
+import { DriverModel } from "../../domain/models/driver.model";
+import Result from "../../../shared/application/interfaces/result.interface";
 
 const FilterFieldActiveInDriver = (driver: DriverModel) => ({
   id: driver.id,

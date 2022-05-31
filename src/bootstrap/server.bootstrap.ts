@@ -1,6 +1,9 @@
 import http from "http";
 import app from "../app";
 import Bootstrap from "./bootstrap";
+import yenv from "yenv";
+
+const env = yenv();
 
 export default class ServerBootstrap extends Bootstrap {
   initialize(): Promise<boolean | Error> {
@@ -8,10 +11,10 @@ export default class ServerBootstrap extends Bootstrap {
       const server = http.createServer(app);
 
       server
-        .listen(3000)
+        .listen(env.PORT)
         .on("listening", () => {
           resolve(true);
-          console.log("Server is running on port 3000");
+          console.log(`Server is running on port ${env.PORT}`);
         })
         .on("error", reject);
     });

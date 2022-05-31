@@ -6,9 +6,11 @@ export class Trace {
 
   private constructor() {}
 
-  public static get traceId(): string {
+  public static traceId(start: boolean = false): string {
     if (!Trace.instance) {
       Trace.instance = new Trace();
+      Trace.instance.id = uuidv4();
+    } else if (Trace.instance && start) {
       Trace.instance.id = uuidv4();
     }
 

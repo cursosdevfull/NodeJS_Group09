@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf cache dist",
-    "start": "node index",
+    "start": "cross-env NODE_ENV=production node dist/index",
     "build": "npm run clean && tsc && gulp minify",
     "dev": "nodemon src/index.ts"
   },
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/cursosdevfull/NodeJS_Group09#readme",
   "dependencies": {
+    "cross-env": "^7.0.3",
     "express": "^4.17.3",
     "lodash": "^4.17.21",
     "moment": "^2.29.2",
@@ -30,7 +31,9 @@
     "reflect-metadata": "^0.1.13",
     "tsconfig-paths": "^4.0.0",
     "typeorm": "^0.3.6",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "winston": "^3.7.2",
+    "yenv": "^3.0.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
