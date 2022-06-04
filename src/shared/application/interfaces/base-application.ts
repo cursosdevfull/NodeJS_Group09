@@ -1,7 +1,7 @@
-import { DTOAbstract } from "../../../drivers/application/dtos/dto";
 import { BaseRepository } from "../../../shared/domain/repositories/base-repository";
 import { Logger } from "../../../shared/helpers/logging.helper";
 import { Trace } from "../../../shared/helpers/trace.helper";
+import { DTOAbstract } from "./dtos/abstract.dto";
 import Result from "./result.interface";
 
 export class BaseApplication<T> {
@@ -12,7 +12,8 @@ export class BaseApplication<T> {
   ) {}
 
   async add(entity: T): Promise<Result<T>> {
-    return await this.repository.insert(entity);
+    const result = await this.repository.insert(entity);
+    return this.dto.mapping(result);
   }
 
   async update(

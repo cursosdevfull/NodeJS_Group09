@@ -1,4 +1,3 @@
-import express from "express";
 import { UserController } from "./user.controller";
 import { UserApplication } from "../../application/user.application";
 import { UserInfrastructure } from "../../infrastructure/user.infrastructure";
@@ -13,25 +12,5 @@ export default class extends BaseRouter {
     super(controller);
   }
 
-  mountRoutes(): void {
-    /*     this.expressRouter.get("/", controller.list);
-    this.expressRouter.post("/", controller.add);
-    this.expressRouter.put("/", controller.update);
-    this.expressRouter.delete("/:id", controller.delete);
-    this.expressRouter.get("/:id", controller.findById); */
-  }
+  mountRoutes(): void {}
 }
-
-const router = express.Router();
-
-/* router.get("/", controller.list.bind(controller)); */
-/* router.get("/", (req, res) => {
-  controller.list(req, res);
-}); */
-
-router.get("/", controller.list);
-router.post("/", controller.add);
-router.put("/", controller.update);
-router.delete("/:id", controller.delete);
-router.get("/:id", controller.findById);
-//export default router;

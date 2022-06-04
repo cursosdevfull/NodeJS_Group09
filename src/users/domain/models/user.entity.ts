@@ -8,6 +8,9 @@ export class UserEntity {
   @Column({ type: "varchar", length: 50 })
   name: string;
 
+  @Column({ type: "varchar", length: 100 })
+  email: string;
+
   @Column({ type: "integer" })
   age: string;
 

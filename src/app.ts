@@ -1,8 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import RoutesUser from "./users/interfaces/http/users.route";
 import RoutesDriver from "./drivers/interfaces/drivers.route";
-import { v4 as uuidv4 } from "uuid";
-import { Logger, Transport } from "./shared/helpers/logging.helper";
+import AuthRouter from "./auth/interfaces/auth.route";
 import { HandlerErrors } from "./shared/helpers/errors.helper";
 
 class App {
@@ -26,8 +25,9 @@ class App {
   }
 
   mountRoutes(): void {
-    // this.expressApp.use("/users", new RoutesUser().expressRouter);
+    this.expressApp.use("/users", new RoutesUser().expressRouter);
     this.expressApp.use("/drivers", new RoutesDriver().expressRouter);
+    this.expressApp.use("/auth", new AuthRouter().expressRouter);
   }
 
   mountHealthCheck(): void {

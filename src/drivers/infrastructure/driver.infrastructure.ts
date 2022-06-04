@@ -3,7 +3,7 @@ import { DriverRepository } from "../domain/repositories/driver.repository";
 import { BaseInfrastructure } from "../../shared/infrastructure/base-infrastructure";
 import { DriverEntity } from "../domain/models/driver.entity";
 import Result from "../../shared/application/interfaces/result.interface";
-import DatabaseBootstrap from "../..//bootstrap/database.bootstrap";
+import DatabaseBootstrap from "../../bootstrap/database.bootstrap";
 import { Repository } from "typeorm";
 import { ResponseDto } from "../../shared/application/interfaces/dtos/response.dto";
 

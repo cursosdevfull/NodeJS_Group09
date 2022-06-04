@@ -21,10 +21,12 @@
   },
   "homepage": "https://github.com/cursosdevfull/NodeJS_Group09#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cross-env": "^7.0.3",
     "express": "^4.17.3",
+    "jwt-simple": "^0.5.6",
     "lodash": "^4.17.21",
-    "moment": "^2.29.2",
+    "moment": "^2.29.3",
     "multer": "^1.4.4",
     "mysql2": "^2.3.3",
     "path-alias-resolver": "^1.0.3-alpha",
@@ -36,6 +38,7 @@
     "yenv": "^3.0.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.13",
     "@types/lodash": "^4.14.182",
     "@types/uuid": "^8.3.4",

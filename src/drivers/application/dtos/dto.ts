@@ -1,30 +1,15 @@
 import { DriverModel } from "../../domain/models/driver.model";
 import Result from "../../../shared/application/interfaces/result.interface";
+import { DTOAbstract } from "../../../shared/application/interfaces/dtos/abstract.dto";
 
-const FilterFieldActiveInDriver = (driver: DriverModel) => ({
-  id: driver.id,
-  name: driver.name,
-  lastname: driver.lastname,
-});
+const FilterFieldActiveInDriver = (driver: DriverModel) => {
+  const obj = Object.assign({}, driver);
+  delete obj.active;
+  return obj;
+};
 
 export interface CB<T> {
   cb(result: Result<T>): Result<T>;
-}
-
-export abstract class DTOAbstract<T> {
-  abstract callback(result: Result<T>): Result<T>;
-  /* abstract listFunctions: CB<T>[]
-
-  execute(callback: CB<T>): CB<T> {
-    const result = callback()
-
-    return this.execute(callback.cb(result));
-  } */
-
-  mapping(result: Result<T>): Result<T> {
-    return this.callback(result);
-    // this.execute(this.listFunctions[0]);
-  }
 }
 
 export class DriverDTO extends DTOAbstract<DriverModel> {
