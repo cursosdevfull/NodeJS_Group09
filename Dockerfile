@@ -2,7 +2,7 @@ FROM node:16.13-alpine3.15 as STAGE_BUILD
 
 WORKDIR /code
 
-ADD package*.json .
+ADD package*.json ./
 
 RUN npm install
 
