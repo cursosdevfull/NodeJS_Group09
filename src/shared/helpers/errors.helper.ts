@@ -2,8 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import { Trace } from "./trace.helper";
 
 export interface IError extends Error {
-  status: number;
-  traceId: string;
+  status?: number;
+  traceId?: string;
 }
 
 export class HandlerErrors {

@@ -23,5 +23,10 @@ export default class AuthRouter {
       "/login",
       HandlerErrors.catchError(this.controller.login)
     );
+
+    this.expressRouter.get(
+      "/get-new-access-token/:refreshToken",
+      HandlerErrors.catchError(this.controller.getNewAccessToken)
+    );
   }
 }

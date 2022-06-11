@@ -8,6 +8,10 @@ export class UserDTO extends DTOAbstract<UserModel> {
 
     if (Array.isArray(data)) {
       result.payload.data = data.map((user: UserModel) => {
+        if (user.roles) {
+          user.roles = user.roles.map((role: any) => role.roleName);
+        }
+
         delete user.password;
         delete user.active;
         delete user.refreshToken;
@@ -18,6 +22,11 @@ export class UserDTO extends DTOAbstract<UserModel> {
         return user;
       });
     } else {
+      const userModel = result.payload.data as UserModel;
+      if (userModel.roles) {
+        userModel.roles = userModel.roles.map((role: any) => role.roleName);
+      }
+
       delete (result.payload.data as UserModel).active;
       delete (result.payload.data as UserModel).password;
       delete (result.payload.data as UserModel).refreshToken;

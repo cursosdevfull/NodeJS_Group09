@@ -7,4 +7,8 @@ export class AuthApplication {
   login(auth: AuthModel) {
     return this.repository.login(auth);
   }
+
+  getNewAccessToken(refreshToken: string) {
+    return this.repository.getNewAccessToken(refreshToken);
+  }
 }

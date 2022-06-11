@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { RoleEntity } from "src/roles/domain/models/role.entity";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToMany,
+  JoinTable,
+} from "typeorm";
 
 @Entity({ name: "user" })
 export class UserEntity {
@@ -34,4 +41,8 @@ export class UserEntity {
 
   @Column({ type: "boolean", default: true })
   active: boolean;
+
+  @ManyToMany((type) => RoleEntity, (role) => role.users)
+  @JoinTable()
+  roles: RoleEntity[];
 }

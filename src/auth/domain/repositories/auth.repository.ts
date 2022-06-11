@@ -4,4 +4,5 @@ import { TokensModel } from "../models/tokens.model";
 
 export interface AuthRepository {
   login(auth: AuthModel): Promise<Result<TokensModel>>;
+  getNewAccessToken(refreshToken: string): Promise<Result<TokensModel>>;
 }

@@ -1,8 +1,10 @@
 import ServerBootstrap from "./bootstrap/server.bootstrap";
 import DatabaseBootstrap from "./bootstrap/database.bootstrap";
 import { DataSource } from "typeorm";
+import RedisBootstrap from "./bootstrap/redis.bootstrap";
 const serverBootstrap = new ServerBootstrap();
 const databaseBootstrap = new DatabaseBootstrap();
+const redisBootstrap = new RedisBootstrap();
 
 export interface Options {
   type: string;
@@ -21,6 +23,7 @@ export interface Options {
     const tasks = [
       serverBootstrap.initialize(),
       databaseBootstrap.initialize(),
+      redisBootstrap.initialize(),
     ];
     const tasksCompleted = await Promise.all(tasks);
 
@@ -39,5 +42,6 @@ export interface Options {
     console.log("Server started");
   } catch (error) {
     console.log("Error", error);
+    process.exit(1);
   }
 })();

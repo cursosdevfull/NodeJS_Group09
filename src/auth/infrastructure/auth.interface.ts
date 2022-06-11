@@ -16,7 +16,10 @@ export class AuthInfrastructure implements AuthRepository {
     const repository: Repository<UserEntity> =
       dataSource.getRepository(UserEntity);
 
-    const user = await repository.findOne({ where: { email: auth.email } });
+    const user = await repository.findOne({
+      where: { email: auth.email },
+      relations: ["roles"],
+    });
 
     if (user) {
       const isPasswordValid = await PasswordService.compare(
@@ -25,15 +28,45 @@ export class AuthInfrastructure implements AuthRepository {
       );
 
       if (isPasswordValid) {
-        const tokens = await TokensService.generateTokens({
+        const accessToken = await TokensService.generateAccessToken({
           email: user.email,
           name: user.name,
+          roles: user.roles.map((role) => role.roleName),
         });
 
-        return ResponseDto(Trace.traceId(), tokens);
+        return ResponseDto(Trace.traceId(), {
+          accessToken,
+          refreshToken: user.refreshToken,
+        });
       } else {
         throw new Error("User is not found");
       }
+    } else {
+      throw new Error("User is not found");
+    }
+  }
+
+  async getNewAccessToken(refreshToken: string): Promise<Result<TokensModel>> {
+    const dataSource = DatabaseBootstrap.dataSource;
+    const repository: Repository<UserEntity> =
+      dataSource.getRepository(UserEntity);
+
+    const user = await repository.findOne({
+      where: { refreshToken, active: true },
+      relations: ["roles"],
+    });
+
+    if (user) {
+      const tokens = TokensService.generateTokens({
+        email: user.email,
+        name: user.name,
+        roles: user.roles.map((role) => role.roleName),
+      });
+
+      user.refreshToken = tokens.refreshToken;
+      await repository.save(user);
+
+      return ResponseDto(Trace.traceId(), tokens);
     } else {
       throw new Error("User is not found");
     }

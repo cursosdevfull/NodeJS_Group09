@@ -22,6 +22,7 @@ export class TokensService {
       id: user.id,
       email: user.email,
       name: user.name,
+      roles: user.roles,
       iat: moment().unix(),
       exp: moment().add(env.TOKEN.TIMEOUT, "seconds").unix(),
     };

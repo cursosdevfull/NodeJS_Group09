@@ -3,6 +3,8 @@ import RoutesUser from "./users/interfaces/http/users.route";
 import RoutesDriver from "./drivers/interfaces/drivers.route";
 import AuthRouter from "./auth/interfaces/auth.route";
 import { HandlerErrors } from "./shared/helpers/errors.helper";
+import { Authentication } from "./shared/middlewares/authentication.guard";
+import { Authorization } from "./shared/middlewares/authorization.guard";
 
 class App {
   expressApp: Application;
@@ -25,8 +27,18 @@ class App {
   }
 
   mountRoutes(): void {
-    this.expressApp.use("/users", new RoutesUser().expressRouter);
-    this.expressApp.use("/drivers", new RoutesDriver().expressRouter);
+    this.expressApp.use(
+      "/users",
+      Authentication.canActivate,
+      Authorization.canActivate("ADMIN"),
+      new RoutesUser().expressRouter
+    );
+    this.expressApp.use(
+      "/drivers",
+      Authentication.canActivate,
+      Authorization.canActivate("ADMIN", "OPERATOR"),
+      new RoutesDriver().expressRouter
+    );
     this.expressApp.use("/auth", new AuthRouter().expressRouter);
   }
 
