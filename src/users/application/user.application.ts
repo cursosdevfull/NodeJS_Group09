@@ -1,5 +1,5 @@
-import { RoleRepository } from "src/roles/domain/repositories/role.repository";
-import Result from "src/shared/application/interfaces/result.interface";
+import { RoleRepository } from "../../roles/domain/repositories/role.repository";
+import Result from "../../shared/application/interfaces/result.interface";
 import { BaseApplication } from "../../shared/application/interfaces/base-application";
 import { UserEntity } from "../domain/models/user.entity";
 import { UserModel } from "../domain/models/user.model";

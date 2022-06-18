@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import RedisBootstrap from "src/bootstrap/redis.bootstrap";
-import { Logger } from "src/shared/helpers/logging.helper";
-import { Trace } from "src/shared/helpers/trace.helper";
-import { UserFactory } from "src/users/domain/models/user.factory";
+import RedisBootstrap from "../../../bootstrap/redis.bootstrap";
+import { Logger } from "../../../shared/helpers/logging.helper";
+import { Trace } from "../../../shared/helpers/trace.helper";
+import { UserFactory } from "../../../users/domain/models/user.factory";
 import { UserApplication } from "../../application/user.application";
 
 export class UserController {

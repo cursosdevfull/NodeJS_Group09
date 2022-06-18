@@ -1,5 +1,5 @@
 {
-  "AWSEBDockerVersion": "1",
+  "AWSEBDockerrunVersion": "1",
   "Image": {
     "Name": "282865065290.dkr.ecr.us-east-1.amazonaws.com/cursonodejs09:latest"
   },
