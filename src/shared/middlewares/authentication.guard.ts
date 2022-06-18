@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { TokensService } from "src/users/domain/services/tokens.service";
+import { TokensService } from "../../users/domain/services/tokens.service";
 import { IError } from "../helpers/errors.helper";
 
 export class Authentication {

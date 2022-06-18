@@ -1,4 +1,4 @@
-import { UserEntity } from "src/users/domain/models/user.entity";
+import { UserEntity } from "../../../users/domain/models/user.entity";
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: "role" })

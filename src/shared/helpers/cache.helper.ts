@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import RedisBootstrap from "src/bootstrap/redis.bootstrap";
+import RedisBootstrap from "../../bootstrap/redis.bootstrap";
 
 export default class CacheRedis {
   static handle(tagName: string) {

@@ -1,4 +1,4 @@
-import DatabaseBootstrap from "src/bootstrap/database.bootstrap";
+import DatabaseBootstrap from "../../bootstrap/database.bootstrap";
 import { Repository, In } from "typeorm";
 import { BaseInfrastructure } from "../../shared/infrastructure/base-infrastructure";
 import { RoleEntity } from "../domain/models/role.entity";
