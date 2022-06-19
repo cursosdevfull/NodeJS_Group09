@@ -5,25 +5,31 @@ import AuthRouter from "./auth/interfaces/auth.route";
 import { HandlerErrors } from "./shared/helpers/errors.helper";
 import { Authentication } from "./shared/middlewares/authentication.guard";
 import { Authorization } from "./shared/middlewares/authorization.guard";
+import multer from "multer";
 
 class App {
   expressApp: Application;
 
   constructor() {
     this.expressApp = express();
+    this.init();
     this.mountMiddlewares();
     this.mountHealthCheck();
     this.mountRoutes();
     this.mountErrors();
   }
 
+  init() {
+    multer({
+      limits: {
+        fileSize: 8000000,
+      },
+    });
+  }
+
   mountMiddlewares(): void {
     this.expressApp.use(express.json());
     this.expressApp.use(express.urlencoded({ extended: true })); // request.body
-    /*  this.expressApp.use((req, res, next) => {
-      req.traceId = uuidv4();
-      next();
-    }); */
   }
 
   mountRoutes(): void {

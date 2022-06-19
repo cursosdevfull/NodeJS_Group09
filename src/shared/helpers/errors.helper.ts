@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { Logger } from "./logging.helper";
 import { Trace } from "./trace.helper";
 
 export interface IError extends Error {
@@ -44,6 +45,15 @@ export class HandlerErrors {
     if (process.env.NODE_ENV !== "production") {
       objError.stack = error.stack;
     }
+
+    Logger.getLogger().info({
+      typeElement: "Error",
+      typeAction: "Error",
+      traceId: objError.traceId,
+      message: "An error ocurred",
+      query: JSON.stringify(Object.assign(objError, { stack: error.stack })),
+      datetime: new Date(),
+    });
 
     res.status(error.status).json(objError);
   }

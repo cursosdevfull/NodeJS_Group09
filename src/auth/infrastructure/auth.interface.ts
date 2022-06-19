@@ -28,7 +28,7 @@ export class AuthInfrastructure implements AuthRepository {
       );
 
       if (isPasswordValid) {
-        const accessToken = await TokensService.generateAccessToken({
+        const accessToken = TokensService.generateAccessToken({
           email: user.email,
           name: user.name,
           roles: user.roles.map((role) => role.roleName),

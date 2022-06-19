@@ -1,6 +1,9 @@
 import { UserModel } from "../../domain/models/user.model";
 import Result from "../../../shared/application/interfaces/result.interface";
 import { DTOAbstract } from "../../../shared/application/interfaces/dtos/abstract.dto";
+import yenv from "yenv";
+
+const env = yenv();
 
 export class UserDTO extends DTOAbstract<UserModel> {
   callback(result: Result<UserModel>): Result<UserModel> {
@@ -11,6 +14,8 @@ export class UserDTO extends DTOAbstract<UserModel> {
         if (user.roles) {
           user.roles = user.roles.map((role: any) => role.roleName);
         }
+
+        user.photo = `${env.S3.bucketPath}/${user.photo}`;
 
         delete user.password;
         delete user.active;
@@ -26,6 +31,8 @@ export class UserDTO extends DTOAbstract<UserModel> {
       if (userModel.roles) {
         userModel.roles = userModel.roles.map((role: any) => role.roleName);
       }
+
+      userModel.photo = `${env.S3.bucketPath}/${userModel.photo}`;
 
       delete (result.payload.data as UserModel).active;
       delete (result.payload.data as UserModel).password;

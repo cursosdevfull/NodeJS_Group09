@@ -30,6 +30,9 @@ export class UserEntity {
   @Column({ type: "varchar", length: 100 })
   refreshToken: string;
 
+  @Column({ type: "varchar", length: 100 })
+  photo: string;
+
   @Column({ type: "datetime" })
   createdAt: Date;
 

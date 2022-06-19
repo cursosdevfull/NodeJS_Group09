@@ -22,7 +22,11 @@ export class DriverController {
       query: JSON.stringify({}),
       datetime: new Date(),
     });
-    const drivers = await this.application.findAll({}, [], {});
+    const drivers = await this.application.findAll(
+      { fieldNoExists: true },
+      [],
+      {}
+    );
     res.json(drivers);
   }
 

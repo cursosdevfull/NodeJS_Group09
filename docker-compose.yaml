@@ -59,6 +59,12 @@ services:
     networks:
       - net-cursonodejs09
 
+  sonarqube:
+    image: sonarqube:8-community
+    container_name: sonarqube
+    ports:
+      - 9000:9000
+      - 9092:9092
 volumes:
   vol-mysql-nodejs09:
   vol-elasticsearch:

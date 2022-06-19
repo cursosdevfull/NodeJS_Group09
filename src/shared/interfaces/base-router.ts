@@ -5,7 +5,7 @@ import { HandlerErrors } from "../helpers/errors.helper";
 export abstract class BaseRouter {
   expressRouter: express.Router;
 
-  constructor(private controller: any, private tagName: string = "") {
+  constructor(private controller: any, protected tagName: string = "") {
     this.expressRouter = express.Router();
     this.mountRoutesCommons();
     this.mountRoutes();

@@ -8,6 +8,7 @@ export class UserModel {
     public email: string,
     public password: string,
     public refreshToken: string,
+    public photo: string,
     public roles: number[] | string[] | RoleEntity[],
     public createdAt: Date,
     public updatedAt: Date | null,
