@@ -12,6 +12,8 @@ import {
   IUploadImage,
 } from "../../../shared/infrastructure/upload.middleware";
 import { UploadBuilder } from "../../../shared/application/upload-builder";
+import { Validators } from "../../../shared/middlewares/validate.middleware";
+import { userSchemas } from "../schemas/schema";
 
 const infrastructureUser = new UserInfrastructure();
 const infrastructureRole = new RoleInfrastructure();
@@ -44,7 +46,9 @@ export default class extends BaseRouter {
           .addMimeTypesAllowed(["image/jpeg", "image/png"])
           .build()
       ),
+      Validators.validate(userSchemas.INSERT),
       HandlerErrors.catchError(controller.add)
+      //controller.add
     );
     this.expressRouter.put("/:id", HandlerErrors.catchError(controller.update));
     this.expressRouter.delete(

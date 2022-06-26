@@ -38,7 +38,7 @@ export class HandlerErrors {
     const objError: Partial<IError> = {
       traceId: Trace.traceId(),
       name: error.name,
-      status: error.status,
+      status: error.status ?? 500,
       message: error.message,
     };
 
@@ -55,6 +55,6 @@ export class HandlerErrors {
       datetime: new Date(),
     });
 
-    res.status(error.status).json(objError);
+    res.status(objError.status).json(objError);
   }
 }

@@ -30,4 +30,8 @@ export default class DatabaseBootstrap extends DatabaseListen {
     source = data;
     return data.initialize();
   }
+
+  closeConnection() {
+    source.destroy();
+  }
 }

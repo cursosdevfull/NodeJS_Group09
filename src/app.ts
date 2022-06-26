@@ -6,6 +6,7 @@ import { HandlerErrors } from "./shared/helpers/errors.helper";
 import { Authentication } from "./shared/middlewares/authentication.guard";
 import { Authorization } from "./shared/middlewares/authorization.guard";
 import multer from "multer";
+import helmet from "helmet";
 
 class App {
   expressApp: Application;
@@ -28,6 +29,7 @@ class App {
   }
 
   mountMiddlewares(): void {
+    this.expressApp.use(helmet());
     this.expressApp.use(express.json());
     this.expressApp.use(express.urlencoded({ extended: true })); // request.body
   }

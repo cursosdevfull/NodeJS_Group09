@@ -1,0 +1,61 @@
+{
+  "traceId": "7e19bc08-eafd-43f3-b004-57f9143255a5",
+  "payload": {
+    "data": [
+      {
+        "id": 1,
+        "name": "Sergio",
+        "email": "sergio@correo.com",
+        "age": 30,
+        "lastname": "Hidalgo",
+        "photo": "https://cursonodejs09.s3.amazonaws.com/",
+        "roles": ["ADMIN", "OPERATOR"]
+      },
+      {
+        "id": 2,
+        "name": "Sergio2",
+        "email": "sergio@correo.com",
+        "age": 40,
+        "lastname": "Hidalgo2",
+        "photo": "https://cursonodejs09.s3.amazonaws.com/",
+        "roles": ["ADMIN", "OPERATOR"]
+      },
+      {
+        "id": 3,
+        "name": "Sergio3",
+        "email": "sergio3@correo.com",
+        "age": 40,
+        "lastname": "Hidalgo3",
+        "photo": "https://cursonodejs09.s3.amazonaws.com/",
+        "roles": ["ADMIN", "OPERATOR"]
+      },
+      {
+        "id": 4,
+        "name": "Sergio3",
+        "email": "sergio4@correo.com",
+        "age": 40,
+        "lastname": "Hidalgo3",
+        "photo": "https://cursonodejs09.s3.amazonaws.com/",
+        "roles": ["ADMIN", "OPERATOR"]
+      },
+      {
+        "id": 5,
+        "name": "Sergio3",
+        "email": "sergio5@correo.com",
+        "age": 40,
+        "lastname": "Hidalgo3",
+        "photo": "https://cursonodejs09.s3.amazonaws.com/",
+        "roles": ["ADMIN", "OPERATOR"]
+      },
+      {
+        "id": 6,
+        "name": "Sergio4",
+        "email": "sergio6@correo.com",
+        "age": 50,
+        "lastname": "Hidalgo3",
+        "photo": "https://cursonodejs09.s3.amazonaws.com/",
+        "roles": ["ADMIN", "OPERATOR"]
+      }
+    ]
+  }
+}

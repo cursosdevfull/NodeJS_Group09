@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="D:\Cursos\NodeJS_Group09\test\unit\user.application.spec.ts">
+    <testCase name="user.application list users" duration="28"/>
+  </file>
+  <file path="D:\Cursos\NodeJS_Group09\test\unit\user.controller.spec.ts">
+    <testCase name="user controller list users" duration="33"/>
+  </file>
+  <file path="D:\Cursos\NodeJS_Group09\test\integration\user.route.spec.ts">
+    <testCase name="user route list users without token" duration="52"/>
+    <testCase name="user route list users with token valid" duration="18"/>
+    <testCase name="user route list users with token invalid" duration="7"/>
+  </file>
+</testExecutions>
